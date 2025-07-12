@@ -1,7 +1,7 @@
 """We need a database engine"""
 
 from sqlalchemy import create_engine
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import declarative_base, sessionmaker
 
 """<dialect>+<driver>://<username>:<password>@<host>:<port>/<database>"""
 
@@ -17,5 +17,6 @@ oracle_db_url = """oracle://<username>:<password>@<host>:<port>/<database>"""
 db_url = "postgresql://postgres:pgadmin@127.0.0.1:5432/sqlalchemy_db"
 
 engine = create_engine(db_url)
-
+Session = sessionmaker(bind=engine)
+db = Session()
 Base = declarative_base()

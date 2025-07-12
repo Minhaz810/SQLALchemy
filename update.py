@@ -1,0 +1,9 @@
+from db_config import db
+from models import User
+
+users = db.query(User).all()
+
+first_user = db.query(User).filter_by(id=3).first()
+
+first_user.name = "A Random Name"
+db.commit()
